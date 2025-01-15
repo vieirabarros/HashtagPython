@@ -13,7 +13,6 @@ import pandas
 
 time.sleep(5)
 
-#print(pyautogui.position())
 
 link = 'https://dlp.hashtagtreinamentos.com/python/intensivao/login'
 
@@ -35,8 +34,7 @@ pyautogui.press('enter')
 time.sleep(3)
 
 
-tabela = pandas.read_csv('produtos.csv')
-print(tabela)
+tabela = pandas.read_csv('Automacao\produtos.csv')
 time.sleep(3)
 
 for linha in tabela.index:
@@ -45,17 +43,22 @@ for linha in tabela.index:
 
     #Codigo do produto
     codigo = tabela.loc[linha, 'codigo']
-    pyautogui.write(codigo)
+    pyautogui.write(str(codigo))
     pyautogui.press('tab')
 
     #Marca 
     marca = tabela.loc[linha, 'marca']
-    pyautogui.write(marca)
+    pyautogui.write(str(marca))
     pyautogui.press('tab')
 
     #Tipo
     tipo= tabela.loc[linha, 'tipo']
-    pyautogui.write(tipo)
+    pyautogui.write(str(tipo))
+    pyautogui.press('tab')
+
+    #Categoria
+    categoria = tabela.loc[linha, 'categoria']
+    pyautogui.write(str(categoria))
     pyautogui.press('tab')
 
     #Preço unitário
@@ -71,7 +74,7 @@ for linha in tabela.index:
     #Observações
     obs = tabela.loc[linha, 'obs']
     if obs != "nan":
-        pyautogui.write(obs)
+        pyautogui.write(str(obs))
     pyautogui.press('tab')
 
     #Enviar
